@@ -8,7 +8,12 @@
     <artifactId>mall</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
-    
+    <modules>
+        <module>mall-common</module>
+        <module>mall-mbgenerator</module>
+        <module>mall-security</module>
+    </modules>
+
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
