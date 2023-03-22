@@ -28,7 +28,7 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import com.elliot.mall.common.util.RequestUtil;
-import com.elliot.mall.domain.ClientWebLog;
+import com.elliot.mall.common.domain.ClientWebLog;
 
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.core.util.URLUtil;
@@ -51,7 +51,8 @@ public class ClientWebLogAspect {
 	 */
 	@Pointcut("execution(public * com.elliot.mall.controller.*.*(..)) || "
 			+ "execution(public * com.elliot.mall.*.controller.*.*(..))")
-	public void webLog() {}
+	public void webLog() {
+	}
 
 	/**
 	 * Logs the request information before the method execution.
@@ -79,7 +80,7 @@ public class ClientWebLogAspect {
 		long startTime = System.currentTimeMillis();
 		ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
 		HttpServletRequest request = attributes.getRequest();
-		ClientWebLogAspect webLog = new ClientWebLogAspect();
+		ClientWebLog webLog = new ClientWebLog();
 
 		Signature signature = joinPoint.getSignature();
 		MethodSignature methodSignature = (MethodSignature) signature;
@@ -105,12 +106,12 @@ public class ClientWebLogAspect {
 		webLog.setUri(request.getRequestURI());
 		webLog.setUrl(request.getRequestURL().toString());
 
-		Map<String,Object> logMap = new HashMap<>();
-		logMap.put("url",webLog.getUrl());
-		logMap.put("method",webLog.getMethod());
-		logMap.put("parameter",webLog.getParameter());
-		logMap.put("spendTime",webLog.getSpendTime());
-		logMap.put("description",webLog.getDescription());
+		Map<String, Object> logMap = new HashMap<>();
+		logMap.put("url", webLog.getUrl());
+		logMap.put("method", webLog.getMethod());
+		logMap.put("parameter", webLog.getParameter());
+		logMap.put("spendTime", webLog.getSpendTime());
+		logMap.put("description", webLog.getDescription());
 
 		LOGGER.info(Markers.appendEntries(logMap), JSONUtil.toJsonStr(webLog));
 		return result;
@@ -142,3 +143,4 @@ public class ClientWebLogAspect {
 		}
 		return parameters.size() == 0 ? null : parameters.size() == 1 ? parameters.get(0) : parameters;
 	}
+}
