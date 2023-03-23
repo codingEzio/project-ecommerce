@@ -45,14 +45,14 @@
         </jdbcConnection>
 
         <!-- Configure the Java model generator -->
-        <javaModelGenerator targetPackage="com.elliot.mall.model" targetProject="mall-mbgenerator\src\main\java"/>
+        <javaModelGenerator targetPackage="com.elliot.mall.model" targetProject="mall-mbgenerator/src/main/java"/>
 
         <!-- Configure the SQL mapper generator -->
-        <sqlMapGenerator targetPackage="com.elliot.mall.mapper" targetProject="mall-mbgenerator\src\main\resources"/>
+        <sqlMapGenerator targetPackage="com.elliot.mall.mapper" targetProject="mall-mbgenerator/src/main/resources"/>
 
         <!-- Configure the Java client generator -->
         <javaClientGenerator type="XMLMAPPER" targetPackage="com.elliot.mall.mapper"
-                             targetProject="mall-mbgenerator\src\main\java"/>
+                             targetProject="mall-mbgenerator/src/main/java"/>
 
         <!-- Configure the table to generate Java models and SQL mappers for. To generate all tables, set tableName to '%' -->
         <table tableName="%">
