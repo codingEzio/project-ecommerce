@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <!-- Load properties from generator.properties file -->
+    <properties resource="generator.properties"/>
+
+    <!-- Configure the context for MyBatis Generator -->
+    <context id="MySqlContext" targetRuntime="MyBatis3" defaultModelType="flat">
+        <!-- Configure the delimiters for SQL statements -->
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
+
+        <!-- Configure the encoding for generated Java files -->
+        <property name="javaFileEncoding" value="UTF-8"/>
+
+        <!-- Add serializable methods to generated models -->
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+
+        <!-- Add a toString method to generated models -->
+        <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>
+
+        <!-- Override existing mapper XML files -->
+        <plugin type="org.mybatis.generator.plugins.UnmergeableXmlMappersPlugin"/>
+
+        <!-- Configure the comment generator for generated models -->
+        <commentGenerator type="com.elliot.mall.GeneratorDBFieldComment">
+            <!-- Suppress all comments -->
+            <property name="suppressAllComments" value="true"/>
+            <!-- Suppress date in comments -->
+            <property name="suppressDate" value="true"/>
+            <!-- Add remarks from the database table -->
+            <property name="addRemarkComments" value="true"/>
+        </commentGenerator>
+
+        <!-- Configure the JDBC connection to the database -->
+        <jdbcConnection driverClass="${jdbc.driverClass}"
+                        connectionURL="${jdbc.connectionURL}"
+                        userId="${jdbc.userId}"
+                        password="${jdbc.password}">
+            <!-- Fix an issue with the MySQL driver after version 8.0 -->
+            <property name="nullCatalogMeansCurrent" value="true"/>
+        </jdbcConnection>
+
+        <!-- Configure the Java model generator -->
+        <javaModelGenerator targetPackage="com.elliot.mall.model" targetProject="mall-mbgenerator\src\main\java"/>
+
+        <!-- Configure the SQL mapper generator -->
+        <sqlMapGenerator targetPackage="com.elliot.mall.mapper" targetProject="mall-mbgenerator\src\main\resources"/>
+
+        <!-- Configure the Java client generator -->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.elliot.mall.mapper"
+                             targetProject="mall-mbgenerator\src\main\java"/>
+
+        <!-- Configure the table to generate Java models and SQL mappers for. To generate all tables, set tableName to '%' -->
+        <table tableName="%">
+            <!-- Specify the primary key generation strategy -->
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
+    </context>
+</generatorConfiguration>
