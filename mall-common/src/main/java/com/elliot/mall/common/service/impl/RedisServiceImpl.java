@@ -1,6 +1,7 @@
 package com.elliot.mall.common.service.impl;
 
 import com.elliot.mall.common.service.RedisService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
@@ -11,11 +12,8 @@ import java.util.concurrent.TimeUnit;
 
 @Service
 public class RedisServiceImpl implements RedisService {
-	private final RedisTemplate<String, Object> redisTemplate;
-
-	public RedisServiceImpl(RedisTemplate<String, Object> redisTemplate) {
-		this.redisTemplate = redisTemplate;
-	}
+	@Autowired
+	private RedisTemplate<String, Object> redisTemplate;
 
 	@Override
 	public void set(String key, Object value, long time) {
