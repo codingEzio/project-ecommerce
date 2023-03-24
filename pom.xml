@@ -13,6 +13,8 @@
         <module>mall-mbgenerator</module>
         <module>mall-security</module>
         <module>mall-search</module>
+        <module>mall-portal</module>
+        <module>mall-admin</module>
     </modules>
 
     <parent>
