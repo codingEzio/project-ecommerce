@@ -2,8 +2,14 @@ package com.elliot.mall.dto;
 
 import java.util.List;
 
-import com.elliot.mall.model.*;
-
+import com.elliot.mall.model.CmsPrefrenceAreaProductRelation;
+import com.elliot.mall.model.CmsSubjectProductRelation;
+import com.elliot.mall.model.PmsMemberPrice;
+import com.elliot.mall.model.PmsProduct;
+import com.elliot.mall.model.PmsProductAttributeValue;
+import com.elliot.mall.model.PmsProductFullReduction;
+import com.elliot.mall.model.PmsProductLadder;
+import com.elliot.mall.model.PmsSkuStock;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
