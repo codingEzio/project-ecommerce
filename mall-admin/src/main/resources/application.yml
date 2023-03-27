@@ -1,0 +1,64 @@
+spring:
+  application:
+    name: mall-admin
+  profiles:
+    active: dev #Default environment is set to development
+  servlet:
+    multipart:
+      enabled: true #Enable file uploads
+      max-file-size: 10MB #Limit the file upload size to 10 MB
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher #Set path matching strategy to Ant PathMatcher
+
+mybatis:
+  mapper-locations:
+    - classpath:dao/*.xml
+    - classpath*:com/**/mapper/*.xml #Specify the location of MyBatis mapper files
+
+jwt:
+  tokenHeader: Authorization #Request header to store the JWT token
+  secret: mall-admin-secret #Secret key used for JWT encryption and decryption
+  expiration: 604800 #JWT expiration time (in seconds) (60*60*24*7)
+  tokenHead: 'Bearer ' #JWT token prefix
+
+redis:
+  database: mall #Set Redis database name
+  key:
+    admin: 'ums:admin' #Redis key for administrator
+    resourceList: 'ums:resourceList' #Redis key for resource list
+  expire:
+    common: 86400 #Key expiration time in seconds (24 hours)
+
+secure:
+  ignored:
+    urls: #Security white-listed URLs
+      - /swagger-ui/
+      - /swagger-resources/**
+      - /**/v2/api-docs
+      - /**/*.html
+      - /**/*.js
+      - /**/*.css
+      - /**/*.png
+      - /**/*.map
+      - /favicon.ico
+      - /actuator/**
+      - /druid/**
+      - /admin/login
+      - /admin/register
+      - /admin/info
+      - /admin/logout
+      - /minio/upload
+
+aliyun:
+  oss:
+    endpoint: oss-cn-shenzhen.aliyuncs.com #OSS service access domain name
+    accessKeyId: test #Access key ID used for authentication
+    accessKeySecret: test #Access key secret used for encryption and signature verification
+    bucketName: macro-oss #OSS storage space name
+    policy:
+      expire: 300 #Signature valid period (in seconds)
+    maxSize: 10 #Maximum upload file size in MB
+    callback: http://39.98.190.128:8080/aliyun/oss/callback #Callback URL after file upload succeeds
+    dir:
+      prefix: mall/images/ #Directory path prefix for file upload
