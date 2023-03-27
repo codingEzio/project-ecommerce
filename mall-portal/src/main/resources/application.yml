@@ -1,0 +1,53 @@
+spring:
+  application:
+    name: mall-portal  # name of the Spring application
+  profiles:
+    active: dev  # active profile for the Spring application
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher  # matching strategy for request mapping
+
+mybatis:
+  mapper-locations:
+    - classpath:dao/*.xml  # location of MyBatis mapper files
+    - classpath*:com/**/mapper/*.xml
+
+jwt:
+  tokenHeader: Authorization  # header key for JWT token
+  secret: mall-portal-secret  # secret key for JWT token
+  expiration: 604800  # expiration time for JWT token (in seconds)
+  tokenHead: 'Bearer '  # prefix for JWT token
+
+secure:
+  ignored:
+    urls: # URL patterns that do not require authentication
+      - /swagger-ui/
+      - /swagger-resources/**
+      - /**/v2/api-docs
+      - /**/*.html
+      - /**/*.js
+      - /**/*.css
+      - /**/*.png
+      - /**/*.map
+      - /favicon.ico
+      - /druid/**
+      - /actuator/**
+      - /sso/**
+      - /home/**
+      - /product/**
+      - /brand/**
+
+redis:
+  database: mall  # Redis database name
+  key:
+    authCode: 'ums:authCode'  # Redis key for authentication code
+    orderId: 'oms:orderId'  # Redis key for order ID
+    member: 'ums:member'  # Redis key for member information
+  expire:
+    authCode: 90  # expiration time for authentication code (in seconds)
+    common: 86400  # expiration time for other keys (in seconds)
+
+rabbitmq:
+  queue:
+    name:
+      cancelOrder: cancelOrderQueue  # name of RabbitMQ queue for canceling orders

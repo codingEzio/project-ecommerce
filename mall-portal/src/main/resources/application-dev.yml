@@ -1,0 +1,56 @@
+# Server configuration
+server:
+  port: 8085
+
+# Spring configuration
+spring:
+  # DataSource configuration
+  datasource:
+    url: jdbc:mysql://localhost:3306/mall?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&useSSL=false
+    username: root
+    password: root
+    druid:
+      # Connection pool initialization size
+      initial-size: 5
+      # Minimum number of idle connections
+      min-idle: 10
+      # Maximum number of active connections
+      max-active: 20
+      web-stat-filter:
+        # Exclude these requests from statistics
+        exclusions: "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*"
+      stat-view-servlet:
+        # Login username and password to access monitoring web pages
+        login-username: druid
+        login-password: druid
+  # MongoDB configuration
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: mall-port
+  # Redis configuration
+  redis:
+    host: localhost # Redis server address
+    database: 0 # Redis database index (default is 0)
+    port: 6379 # Redis server connection port
+    password: # Redis server connection password (default is empty)
+    timeout: 300ms # Connection timeout (milliseconds)
+  # RabbitMQ configuration
+  rabbitmq:
+    host: localhost
+    port: 5672
+    virtual-host: /mall
+    username: mall
+    password: mall
+
+# Logging configuration
+logging:
+  level:
+    root: info
+    com.macro.mall: debug
+
+# Logstash configuration
+logstash:
+  host: localhost
+  enableInnerLog: false

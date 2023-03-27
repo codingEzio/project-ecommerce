@@ -1,0 +1,57 @@
+# Config file for mall-portal application
+
+# Server configuration
+server:
+  port: 8085
+
+# Spring configuration
+spring:
+  # Data source configuration
+  datasource:
+    url: jdbc:mysql://db:3306/mall?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&useSSL=false
+    username: reader
+    password: 123456
+    druid:
+      initial-size: 5 # Initial size of the connection pool
+      min-idle: 10 # Minimum number of idle connections in the pool
+      max-active: 20 # Maximum number of active connections in the pool
+      web-stat-filter:
+        exclusions: "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*" # Requests excluded from statistics
+      stat-view-servlet: # Login username and password for accessing the monitoring web page
+        login-username: druid
+        login-password: druid
+
+  # MongoDB configuration
+  data:
+    mongodb:
+      host: mongo
+      port: 27017
+      database: mall-port
+
+  # Redis configuration
+  redis:
+    host: redis # Redis server address
+    database: 0 # Redis database index (default is 0)
+    port: 6379 # Redis server connection port
+    password: # Redis server connection password (default is empty)
+    timeout: 300ms # Connection timeout (in milliseconds)
+
+  # RabbitMQ configuration
+  rabbitmq:
+    host: rabbit
+    port: 5672
+    virtual-host: /mall
+    username: mall
+    password: mall
+
+  # Logging configuration
+  logging:
+    file:
+      path: /var/logs
+    level:
+      root: info
+      com.elliot.mall: info
+
+  # Logstash configuration
+  logstash:
+    host: logstash
