@@ -15,6 +15,7 @@
         <module>mall-search</module>
         <module>mall-portal</module>
         <module>mall-admin</module>
+        <module>mall-demo</module>
     </modules>
 
     <parent>
