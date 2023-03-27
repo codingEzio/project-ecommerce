@@ -90,17 +90,17 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>com.macro.mall</groupId>
+                <groupId>com.elliot.mall</groupId>
                 <artifactId>mall-common</artifactId>
                 <version>${mall-common.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.macro.mall</groupId>
+                <groupId>com.elliot.mall</groupId>
                 <artifactId>mall-mbg</artifactId>
                 <version>${mall-mbg.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.macro.mall</groupId>
+                <groupId>com.elliot.mall</groupId>
                 <artifactId>mall-security</artifactId>
                 <version>${mall-security.version}</version>
             </dependency>

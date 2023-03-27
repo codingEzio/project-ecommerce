@@ -1,8 +1,9 @@
 package com.elliot.mall.security.config;
 
-import com.macro.mall.common.config.BaseRedisConfig;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Configuration;
+
+import com.elliot.mall.common.config.BaseRedisConfig;
 
 /**
  * This is a configuration class for Redis caching in the application. It is annotated with @EnableCaching to enable caching support in the application.

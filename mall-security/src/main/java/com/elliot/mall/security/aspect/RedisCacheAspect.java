@@ -1,6 +1,6 @@
 package com.elliot.mall.security.aspect;
 
-import com.elliot.mall.security.annotation.CacheException;
+import java.lang.reflect.Method;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.Signature;
@@ -13,7 +13,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
-import java.lang.reflect.Method;
+import com.elliot.mall.security.annotation.CacheException;
 
 /**
  * This is an aspect in a Spring Boot application that intercepts method calls to
@@ -29,7 +29,7 @@ import java.lang.reflect.Method;
 public class RedisCacheAspect {
 	private static final Logger LOGGER = LoggerFactory.getLogger(RedisCacheAspect.class);
 
-	@Pointcut("execution(public * com.macro.mall.portal.service.*CacheService.*(..)) || execution(public * com.macro.mall.service.*CacheService.*(..))")
+	@Pointcut("execution(public * com.elliot.mall.portal.service.*CacheService.*(..)) || execution(public * com.elliot.mall.service.*CacheService.*(..))")
 	public void cacheAspect() {
 	}
 

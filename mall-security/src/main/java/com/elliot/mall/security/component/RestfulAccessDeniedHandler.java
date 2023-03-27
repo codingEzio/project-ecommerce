@@ -1,14 +1,17 @@
 package com.elliot.mall.security.component;
 
-import cn.hutool.json.JSONUtil;
-import com.macro.mall.common.api.CommonResult;
-import org.springframework.security.access.AccessDeniedException;
-import org.springframework.security.web.access.AccessDeniedHandler;
+import java.io.IOException;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
+
+import org.springframework.security.access.AccessDeniedException;
+import org.springframework.security.web.access.AccessDeniedHandler;
+
+import com.elliot.mall.common.api.CommonResult;
+
+import cn.hutool.json.JSONUtil;
 
 /**
  * This is a class implementation of the Spring Security AccessDeniedHandler interface. It handles an AccessDeniedException that is thrown when an authenticated user tries to access a resource that they don't have permission to access.
@@ -25,7 +28,7 @@ public class RestfulAccessDeniedHandler implements AccessDeniedHandler {
 
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("application/json");
-		
+
 		response.getWriter().println(JSONUtil.parse(CommonResult.forbidden(e.getMessage())));
 		response.getWriter().flush();
 	}

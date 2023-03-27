@@ -1,7 +1,7 @@
 package com.elliot.mall.search.config;
 
-import com.macro.mall.common.config.BaseSwaggerConfig;
-import com.macro.mall.common.domain.SwaggerProperties;
+import com.elliot.mall.common.config.BaseSwaggerConfig;
+import com.elliot.mall.common.domain.SwaggerProperties;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

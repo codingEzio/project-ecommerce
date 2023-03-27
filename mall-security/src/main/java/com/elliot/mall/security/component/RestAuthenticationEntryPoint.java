@@ -1,14 +1,17 @@
 package com.elliot.mall.security.component;
 
-import cn.hutool.json.JSONUtil;
-import com.macro.mall.common.api.CommonResult;
-import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.web.AuthenticationEntryPoint;
+import java.io.IOException;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
+
+import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.web.AuthenticationEntryPoint;
+
+import com.elliot.mall.common.api.CommonResult;
+
+import cn.hutool.json.JSONUtil;
 
 /**
  * This code defines a class named RestAuthenticationEntryPoint, which implements the AuthenticationEntryPoint interface from the Spring Security framework. The AuthenticationEntryPoint interface is used to handle the scenario where an unauthenticated user tries to access a protected resource.

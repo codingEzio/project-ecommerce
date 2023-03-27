@@ -4,7 +4,7 @@
     <resultMap id="esProductListMap" type="com.elliot.mall.search.domain.EsProduct" autoMapping="true">
         <id column="id" jdbcType="BIGINT" property="id"/>
         <collection property="attrValueList" columnPrefix="attr_"
-                    ofType="com.macro.mall.search.domain.EsProductAttributeValue">
+                    ofType="com.elliot.mall.search.domain.EsProductAttributeValue">
             <id column="id" property="id" jdbcType="BIGINT"/>
             <result column="product_attribute_id" property="productAttributeId" jdbcType="BIGINT"/>
             <result column="value" property="value" jdbcType="VARCHAR"/>
