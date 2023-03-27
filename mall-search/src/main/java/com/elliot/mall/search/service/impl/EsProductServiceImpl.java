@@ -49,14 +49,17 @@ import java.util.stream.Collectors;
 public class EsProductServiceImpl implements EsProductService {
 	private static final Logger LOGGER = LoggerFactory.getLogger(EsProductServiceImpl.class);
 
-	@Autowired
-	private EsProductDao productDao;
+	private final EsProductDao productDao;
 
-	@Autowired
-	private EsProductRepository productRepository;
+	private final EsProductRepository productRepository;
 
-	@Autowired
-	private ElasticsearchRestTemplate elasticsearchRestTemplate;
+	private final ElasticsearchRestTemplate elasticsearchRestTemplate;
+
+	public EsProductServiceImpl(EsProductDao productDao, EsProductRepository productRepository, ElasticsearchRestTemplate elasticsearchRestTemplate) {
+		this.productDao = productDao;
+		this.productRepository = productRepository;
+		this.elasticsearchRestTemplate = elasticsearchRestTemplate;
+	}
 
 	/**
 	 * Imports all {@link EsProduct} objects from the database into the Elasticsearch index.

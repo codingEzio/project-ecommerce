@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-@Service
 public interface RedisService {
 	void set(String key, Object value, long time);
 

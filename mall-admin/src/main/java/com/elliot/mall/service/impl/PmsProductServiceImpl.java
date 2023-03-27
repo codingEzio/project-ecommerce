@@ -5,9 +5,9 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -224,7 +224,7 @@ public class PmsProductServiceImpl implements PmsProductService {
 		}
 		// 修改sku
 		if (CollUtil.isNotEmpty(updateSkuList)) {
-			for (PmsSkuStock pmsSkuStock : updateSkuList) {
+			for (PmsSkuStock pmsSkuStock: updateSkuList) {
 				skuStockMapper.updateByPrimaryKeySelective(pmsSkuStock);
 			}
 		}
@@ -267,7 +267,7 @@ public class PmsProductServiceImpl implements PmsProductService {
 		List<PmsProductVertifyRecord> list = new ArrayList<>();
 		int count = productMapper.updateByExampleSelective(product, example);
 		// 修改完审核状态后插入审核记录
-		for (Long id : ids) {
+		for (Long id: ids) {
 			PmsProductVertifyRecord record = new PmsProductVertifyRecord();
 			record.setProductId(id);
 			record.setCreateTime(new Date());
@@ -336,7 +336,7 @@ public class PmsProductServiceImpl implements PmsProductService {
 		try {
 			if (CollectionUtils.isEmpty(dataList))
 				return;
-			for (Object item : dataList) {
+			for (Object item: dataList) {
 				Method setId = item.getClass().getMethod("setId", Long.class);
 				setId.invoke(item, (Long) null);
 				Method setProductId = item.getClass().getMethod("setProductId", Long.class);

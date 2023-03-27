@@ -3,14 +3,15 @@ package com.elliot.mall.service.impl;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.logging.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -204,7 +205,7 @@ public class UmsAdminServiceImpl implements UmsAdminService {
 		// 建立新关系
 		if (!CollectionUtils.isEmpty(roleIds)) {
 			List<UmsAdminRoleRelation> list = new ArrayList<>();
-			for (Long roleId : roleIds) {
+			for (Long roleId: roleIds) {
 				UmsAdminRoleRelation roleRelation = new UmsAdminRoleRelation();
 				roleRelation.setAdminId(adminId);
 				roleRelation.setRoleId(roleId);

@@ -14,7 +14,6 @@ import java.util.Collection;
 /**
  * This code is an implementation of an AccessDecisionManager which is responsible for making the final decision whether a user should be granted access to a specific resource or not based on their roles/permissions.
  */
-@Component
 public class DynamicAccessDecisionManager implements AccessDecisionManager {
 
 	/**
